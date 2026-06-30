@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetTagz — Footer</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   PETTAGZ DESIGN SYSTEM — COPY THIS BLOCK INTO EVERY SECTION
+   ============================================================ */
+:root {
+  --forest:       #1A4A2E;
+  --forest-dark:  #0F2D1C;
+  --forest-mid:   #2A6B42;
+  --forest-light: #3A8A56;
+  --gold:         #D4A017;
+  --gold-light:   #F0C040;
+  --cream:        #F5F0E8;
+  --white:        #FFFFFF;
+  --off-white:    #D8E8DC;
+  --muted:        #7AAA88;
+  --border-dark:  rgba(255,255,255,0.10);
+  --font-display: 'Sora', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --max-width:    1100px;
+  --radius-sm:    6px;
+  --radius-md:    14px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--forest-dark); color: var(--white); -webkit-font-smoothing: antialiased; }
+/* ============================================================
+   END DESIGN SYSTEM
+   ============================================================ */
+
+/* Final CTA band above footer */
+.footer-cta {
+  background: linear-gradient(135deg, var(--forest-mid) 0%, var(--forest) 100%);
+  border-top: 1px solid rgba(212,160,23,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.footer-cta h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.footer-cta h2 em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.footer-cta p {
+  font-size: 1rem;
+  color: var(--off-white);
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+.cta-form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 500px;
+  margin: 0 auto 12px;
+}
+
+.cta-form input[type="email"] {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 15px 22px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  width: 280px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.cta-form input[type="email"]:focus { border-color: var(--gold); }
+.cta-form input[type="email"]::placeholder { color: rgba(255,255,255,0.3); }
+
+.cta-form button {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 15px 30px;
+  background: var(--gold);
+  color: var(--forest-dark);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.cta-form button:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.cta-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* Footer */
+footer {
+  background: var(--forest-dark);
+  padding: 60px 24px 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 56px;
+}
+
+.footer-brand .footer-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.footer-brand .footer-logo span { color: var(--gold); }
+
+.footer-brand .footer-tagline {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.65;
+  max-width: 260px;
+  margin-bottom: 24px;
+}
+
+.footer-brand .footer-email a {
+  font-size: 0.85rem;
+  color: var(--gold);
+  text-decoration: none;
+}
+.footer-brand .footer-email a:hover { color: var(--gold-light); }
+
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 18px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 0.88rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col ul li a:hover { color: var(--white); }
+
+/* Divider */
+.footer-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 28px;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.footer-copy span { color: var(--gold); }
+
+.footer-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--muted);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .footer-cta { padding: 60px 20px; }
+  .cta-form { flex-direction: column; align-items: center; }
+  .cta-form input[type="email"] { width: 100%; max-width: 300px; }
+  .cta-form button { width: 100%; max-width: 300px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .footer-top { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- FINAL CTA -->
+<div class="footer-cta">
+  <h2>Your dog deserves better<br>than <em>hoping for the best.</em></h2>
+  <p>Join the waitlist and be first to know when PetTagz ships.</p>
+  <div class="cta-form">
+    <input type="email" placeholder="Your email address">
+    <button type="button">Join the Waitlist</button>
+  </div>
+  <p class="cta-note">No spam. No commitment. Unsubscribe any time.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <div class="footer-logo">Pet<span>Tagz</span></div>
+        <p class="footer-tagline">The smart health monitoring collar that tells you when your dog needs you — before it becomes an emergency.</p>
+        <div class="footer-email"><a href="mailto:info@pet-tagz.com">info@pet-tagz.com</a></div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#hero">Overview</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#product">12 Metrics</a></li>
+          <li><a href="#app">The App</a></li>
+          <li><a href="#coming">Roadmap</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="#contact">Manufacturers</a></li>
+          <li><a href="#contact">Veterinarians</a></li>
+          <li><a href="#contact">Distributors</a></li>
+          <li><a href="#contact">Investors</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#contact">Send a Message</a></li>
+          <li><a href="mailto:info@pet-tagz.com">info@pet-tagz.com</a></li>
+          <li><a href="https://pet-tagz.com">pet-tagz.com</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        &copy; 2026 <span>PetTagz</span>. All rights reserved. &nbsp;·&nbsp; pet-tagz.com
+      </div>
+      <div class="footer-badges">
+        <span class="badge">FCC Certified</span>
+        <span class="badge">RoHS Compliant</span>
+        <span class="badge">IP67 Waterproof</span>
+        <span class="badge">Made for Dogs</span>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
