@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetTagz — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   PETTAGZ DESIGN SYSTEM — COPY THIS BLOCK INTO EVERY SECTION
+   ============================================================ */
+:root {
+  --forest:       #1A4A2E;
+  --forest-dark:  #0F2D1C;
+  --forest-mid:   #2A6B42;
+  --forest-light: #3A8A56;
+  --gold:         #D4A017;
+  --gold-light:   #F0C040;
+  --cream:        #F5F0E8;
+  --white:        #FFFFFF;
+  --off-white:    #D8E8DC;
+  --muted:        #7AAA88;
+  --border-dark:  rgba(255,255,255,0.10);
+  --font-display: 'Sora', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --max-width:    1100px;
+  --radius-sm:    6px;
+  --radius-md:    14px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--forest-dark); color: var(--white); -webkit-font-smoothing: antialiased; }
+/* ============================================================
+   END DESIGN SYSTEM
+   ============================================================ */
+
+.coming {
+  background: var(--forest-dark);
+  padding: 120px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.coming::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.coming-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.section-headline {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+
+.section-headline em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.section-intro {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.75;
+  color: var(--off-white);
+  max-width: 580px;
+  margin-bottom: 72px;
+}
+
+/* Phase cards */
+.phases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 80px;
+}
+
+.phase-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 36px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.phase-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.phase-card.phase-1::before { background: var(--gold); }
+.phase-card.phase-2::before { background: rgba(212,160,23,0.5); }
+.phase-card.phase-3::before { background: rgba(212,160,23,0.25); }
+
+.phase-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.phase-1 .phase-tag { background: rgba(212,160,23,0.15); color: var(--gold); border: 1px solid rgba(212,160,23,0.3); }
+.phase-2 .phase-tag { background: rgba(255,255,255,0.06); color: var(--off-white); border: 1px solid rgba(255,255,255,0.12); }
+.phase-3 .phase-tag { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid rgba(255,255,255,0.08); }
+
+.phase-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.phase-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.phase-card p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.phase-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phase-list li {
+  font-size: 0.82rem;
+  color: var(--off-white);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.phase-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+/* Smart bowl callout */
+.bowl-callout {
+  background: linear-gradient(135deg, rgba(212,160,23,0.08) 0%, rgba(26,74,46,0.4) 100%);
+  border: 1px solid rgba(212,160,23,0.2);
+  border-radius: var(--radius-md);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.bowl-icon-big {
+  font-size: 4rem;
+  opacity: 0.8;
+}
+
+.bowl-text h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.bowl-text h3 em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.bowl-text p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--off-white);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .coming { padding: 80px 20px; }
+  .phases { grid-template-columns: 1fr; }
+  .bowl-callout { grid-template-columns: 1fr; gap: 24px; padding: 32px 24px; }
+  .bowl-icon-big { font-size: 3rem; }
+}
+
+</style>
+</head>
+<body>
+
+<section class="coming">
+  <div class="coming-inner">
+
+    <div class="section-eyebrow">What's Coming</div>
+
+    <h2 class="section-headline">
+      The collar is just<br>
+      <em>the beginning.</em>
+    </h2>
+
+    <p class="section-intro">
+      PetTagz is being built as a platform — not just a product. The collar and owner app launch first, with a growing ecosystem of features rolling out in phases. Here's what's on the roadmap.
+    </p>
+
+    <div class="phases">
+
+      <div class="phase-card phase-1">
+        <span class="phase-tag">Phase 1 — Launch</span>
+        <span class="phase-icon">🚀</span>
+        <h3>Smart Collar + Owner App</h3>
+        <p>The core product. Everything you need to start monitoring your dog's health from day one.</p>
+        <ul class="phase-list">
+          <li>12 sensor health metrics</li>
+          <li>Four-color alert system</li>
+          <li>10-day hot-swap battery</li>
+          <li>Real-time dashboard</li>
+          <li>Basic vet record sharing</li>
+        </ul>
+      </div>
+
+      <div class="phase-card phase-2">
+        <span class="phase-tag">Phase 2 — Expanding</span>
+        <span class="phase-icon">🏥</span>
+        <h3>Full Vet Integration + Smart Feeders</h3>
+        <p>Deeper veterinary tools and the first third-party hardware integrations.</p>
+        <ul class="phase-list">
+          <li>Full vet prescription workflow</li>
+          <li>Auto-refill scheduling</li>
+          <li>Offline vet app functionality</li>
+          <li>Smart feeder integration</li>
+          <li>Food intake volume tracking</li>
+        </ul>
+      </div>
+
+      <div class="phase-card phase-3">
+        <span class="phase-tag">Phase 3 — Platform</span>
+        <span class="phase-icon">🌐</span>
+        <h3>Distributor Network + Smart Bowls</h3>
+        <p>Opening the platform to regional distributors and completing the hydration picture.</p>
+        <ul class="phase-list">
+          <li>Distributor portal marketplace</li>
+          <li>Regional distributor onboarding</li>
+          <li>Smart water bowl integration</li>
+          <li>Full hydration tracking</li>
+          <li>Platform revenue expansion</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="bowl-callout">
+      <div class="bowl-icon-big">🥣</div>
+      <div class="bowl-text">
+        <h3>Smart bowl integration — <em>without making the bowl.</em></h3>
+        <p>The collar tracks eating and drinking behavior. Smart feeders and water bowls track actual volume consumed. In Phase 2 and 3, PetTagz integrates with leading smart bowl brands via API — pulling food and water intake data directly into your dashboard alongside collar metrics. PetTagz becomes the central health hub, not just a collar company.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
