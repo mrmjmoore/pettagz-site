@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetTagz — Contact</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   PETTAGZ DESIGN SYSTEM — COPY THIS BLOCK INTO EVERY SECTION
+   ============================================================ */
+:root {
+  --forest:       #1A4A2E;
+  --forest-dark:  #0F2D1C;
+  --forest-mid:   #2A6B42;
+  --forest-light: #3A8A56;
+  --gold:         #D4A017;
+  --gold-light:   #F0C040;
+  --cream:        #F5F0E8;
+  --white:        #FFFFFF;
+  --off-white:    #D8E8DC;
+  --muted:        #7AAA88;
+  --border-dark:  rgba(255,255,255,0.10);
+  --font-display: 'Sora', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --max-width:    1100px;
+  --radius-sm:    6px;
+  --radius-md:    14px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--forest); color: var(--white); -webkit-font-smoothing: antialiased; }
+/* ============================================================
+   END DESIGN SYSTEM
+   ============================================================ */
+
+.contact {
+  background: var(--forest);
+  padding: 120px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.contact-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Left side */
+.contact-left .section-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.contact-left h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+.contact-left h2 em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.contact-left p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--off-white);
+  margin-bottom: 48px;
+}
+
+.contact-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-option {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-option-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.contact-option h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.contact-option p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.contact-email {
+  margin-top: 32px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.contact-email a {
+  color: var(--gold);
+  text-decoration: none;
+}
+.contact-email a:hover { color: var(--gold-light); }
+
+/* Right side — form */
+.contact-form {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 44px 40px;
+}
+
+.contact-form h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.09);
+}
+
+.form-group select option { background: var(--forest-dark); color: var(--white); }
+
+.form-group textarea {
+  height: 130px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-submit {
+  width: 100%;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 16px;
+  background: var(--gold);
+  color: var(--forest-dark);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.form-submit:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212,160,23,0.35);
+}
+
+.form-note {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 14px;
+  text-align: center;
+}
+
+/* Success message */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+.form-success .success-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
+.form-success h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.form-success p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contact { padding: 80px 20px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 32px 24px; }
+}
+
+</style>
+</head>
+<body>
+
+<section class="contact">
+  <div class="contact-inner">
+
+    <!-- LEFT -->
+    <div class="contact-left">
+      <div class="section-eyebrow">Get In Touch</div>
+      <h2>Let's build something <em>worth wearing.</em></h2>
+      <p>Whether you're a manufacturer interested in partnering, a veterinarian who wants early access, or a dog owner who can't wait to get one — we want to hear from you.</p>
+
+      <div class="contact-options">
+        <div class="contact-option">
+          <span class="contact-option-icon">🏭</span>
+          <div>
+            <h4>Manufacturers & OEM Partners</h4>
+            <p>Interested in producing the PetTagz collar? We're actively evaluating manufacturing partners and would love to discuss your capabilities.</p>
+          </div>
+        </div>
+        <div class="contact-option">
+          <span class="contact-option-icon">🏥</span>
+          <div>
+            <h4>Veterinarians</h4>
+            <p>Want early access to the vet app or interested in being a launch partner practice? Reach out and let's talk.</p>
+          </div>
+        </div>
+        <div class="contact-option">
+          <span class="contact-option-icon">🐾</span>
+          <div>
+            <h4>Dog Owners</h4>
+            <p>Join the waitlist and be first to know when PetTagz is available. Early supporters get first access and launch pricing.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-email">
+        Or email us directly at <a href="mailto:info@pet-tagz.com">info@pet-tagz.com</a>
+      </div>
+    </div>
+
+    <!-- RIGHT — FORM -->
+    <div class="contact-form" id="contact-form-wrap">
+      <h3>Send us a message</h3>
+
+      <form id="pettagz-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="first_name" placeholder="Mark" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="last_name" placeholder="Smith">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="type">I am a...</label>
+          <select id="type" name="contact_type">
+            <option value="">Select one</option>
+            <option value="manufacturer">Manufacturer / OEM Partner</option>
+            <option value="vet">Veterinarian</option>
+            <option value="distributor">Distributor</option>
+            <option value="investor">Investor</option>
+            <option value="owner">Dog Owner</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us a bit about yourself and what you're looking for..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send Message</button>
+        <p class="form-note">We typically respond within 1 business day.</p>
+
+      </form>
+
+      <div class="form-success" id="form-success">
+        <span class="success-icon">✅</span>
+        <h4>Message received!</h4>
+        <p>Thank you for reaching out. We'll be in touch at the email you provided within one business day.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const form = document.getElementById('pettagz-form');
+const success = document.getElementById('form-success');
+
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const data = new FormData(form);
+  const response = await fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+  if (response.ok) {
+    form.style.display = 'none';
+    success.style.display = 'block';
+  }
+});
+</script>
+
+</body>
+</html>
