@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetTagz — The App</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   PETTAGZ DESIGN SYSTEM — COPY THIS BLOCK INTO EVERY SECTION
+   ============================================================ */
+:root {
+  --forest:       #1A4A2E;
+  --forest-dark:  #0F2D1C;
+  --forest-mid:   #2A6B42;
+  --forest-light: #3A8A56;
+  --gold:         #D4A017;
+  --gold-light:   #F0C040;
+  --cream:        #F5F0E8;
+  --white:        #FFFFFF;
+  --off-white:    #D8E8DC;
+  --muted:        #7AAA88;
+  --border-dark:  rgba(255,255,255,0.10);
+  --font-display: 'Sora', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --max-width:    1100px;
+  --radius-sm:    6px;
+  --radius-md:    14px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--forest); color: var(--white); -webkit-font-smoothing: antialiased; }
+/* ============================================================
+   END DESIGN SYSTEM
+   ============================================================ */
+
+.app {
+  background: var(--forest);
+  padding: 120px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.app::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.app-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.section-headline {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+
+.section-headline em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.section-intro {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.75;
+  color: var(--off-white);
+  max-width: 580px;
+  margin-bottom: 72px;
+}
+
+/* ── OWNER APP FEATURES ── */
+.app-block-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm);
+  padding: 28px 24px;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.feature-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(212,160,23,0.25);
+}
+
+.feature-icon {
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.feature-card h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--white);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.feature-card p {
+  font-size: 0.83rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ── VET CONNECTION ── */
+.vet-section {
+  background: linear-gradient(135deg, rgba(26,74,46,0.6) 0%, rgba(15,45,28,0.8) 100%);
+  border: 1px solid rgba(212,160,23,0.2);
+  border-radius: var(--radius-md);
+  padding: 56px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.vet-content .vet-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.vet-content h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--white);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.vet-content h3 em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.vet-content p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--off-white);
+  margin-bottom: 32px;
+}
+
+.vet-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vet-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.vet-feature-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(212,160,23,0.12);
+  border: 1px solid rgba(212,160,23,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.vet-feature-text h5 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.vet-feature-text p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+/* Vet visual side */
+.vet-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vet-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.vet-flow-node {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  padding: 20px 28px;
+  text-align: center;
+  width: 100%;
+}
+
+.vet-flow-node.gold-node {
+  background: rgba(212,160,23,0.1);
+  border-color: rgba(212,160,23,0.3);
+}
+
+.vet-flow-node .node-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+.vet-flow-node .node-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.vet-flow-node .node-desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.vet-flow-arrow {
+  color: rgba(212,160,23,0.5);
+  font-size: 1.4rem;
+  padding: 6px 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .app { padding: 80px 20px; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .vet-section { grid-template-columns: 1fr; gap: 40px; padding: 36px 24px; }
+}
+
+@media (max-width: 480px) {
+  .features-grid { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<section class="app">
+  <div class="app-inner">
+
+    <div class="section-eyebrow">The App</div>
+
+    <h2 class="section-headline">
+      Everything you need to know<br>about your dog —
+      <em>in your pocket.</em>
+    </h2>
+
+    <p class="section-intro">
+      The PetTagz owner app turns 12 streams of sensor data into a simple, clear picture of how your dog is doing right now. No charts to interpret. No guesswork. Just the information you need, when you need it.
+    </p>
+
+    <!-- OWNER APP -->
+    <div class="app-block-label">Owner App Features</div>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h4>Live Health Dashboard</h4>
+        <p>All 12 metrics in one view, updated in real time. Color-coded status at a glance.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🔔</span>
+        <h4>Instant Alerts</h4>
+        <p>Push notifications the moment something changes. Four alert levels — from informational to urgent.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">📈</span>
+        <h4>Trend History</h4>
+        <p>Daily, weekly, and monthly views so you can see patterns over time, not just snapshots.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🐾</span>
+        <h4>Dog Profile</h4>
+        <p>Breed, age, and weight calibrate your dog's normal ranges so alerts are personalized, not generic.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🔋</span>
+        <h4>Battery Status</h4>
+        <p>Monitor collar battery level and get notified when it's time to swap in a fresh charged battery.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🏥</span>
+        <h4>Vet Sharing</h4>
+        <p>One tap shares your dog's complete health record with your veterinarian before any appointment.</p>
+      </div>
+
+    </div>
+
+    <!-- VET CONNECTION -->
+    <div class="vet-section">
+
+      <div class="vet-content">
+        <div class="vet-eyebrow">Veterinarian Connection</div>
+        <h3>Your vet finally gets to see <em>the whole story.</em></h3>
+        <p>A wellness exam gives your vet twenty minutes with your dog, once a year. PetTagz gives them months of continuous health data before you even walk through the door — making every visit more informed and every decision more confident.</p>
+
+        <div class="vet-features">
+          <div class="vet-feature">
+            <div class="vet-feature-icon">📋</div>
+            <div class="vet-feature-text">
+              <h5>Shared Health Records</h5>
+              <p>Owner and vet see the same data. Trends, alerts, and history — all in one place.</p>
+            </div>
+          </div>
+          <div class="vet-feature">
+            <div class="vet-feature-icon">🔒</div>
+            <div class="vet-feature-text">
+              <h5>Closed Loop — Your Vet Only</h5>
+              <p>PetTagz is not a public telehealth platform. Your data is shared with your vet, and no one else.</p>
+            </div>
+          </div>
+          <div class="vet-feature">
+            <div class="vet-feature-icon">⚡</div>
+            <div class="vet-feature-text">
+              <h5>Early Detection</h5>
+              <p>Vets can spot developing issues in the data weeks before symptoms appear in person.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vet-visual">
+        <div class="vet-flow">
+          <div class="vet-flow-node gold-node">
+            <span class="node-icon">🐕</span>
+            <div class="node-title">Your Dog</div>
+            <div class="node-desc">Collar monitors 24/7</div>
+          </div>
+          <div class="vet-flow-arrow">↓</div>
+          <div class="vet-flow-node gold-node">
+            <span class="node-icon">📱</span>
+            <div class="node-title">PetTagz App</div>
+            <div class="node-desc">Real-time dashboard & alerts</div>
+          </div>
+          <div class="vet-flow-arrow">↓</div>
+          <div class="vet-flow-node">
+            <span class="node-icon">🏥</span>
+            <div class="node-title">Your Veterinarian</div>
+            <div class="node-desc">Full health history, shared with one tap</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
